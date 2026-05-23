@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #09090b;
+  --color-brand-red: #ff1f4b;
+  --color-brand-red-hover: #df0f36;
+  --color-steel-gray: #27272a;
+  --color-card-bg: #131316;
+  --color-card-border: #202024;
+  --color-text-muted: #a1a1aa;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", monospace;
+  --font-data: "JetBrains Mono", "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-obsidian);
+    color: #f4f4f5;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .glow-red {
+    box-shadow: 0 0 40px -10px rgba(255, 31, 75, 0.15);
+  }
+  
+  .glow-red-sm {
+    box-shadow: 0 0 20px -5px rgba(255, 31, 75, 0.1);
+  }
+
+  .border-glow-red:hover {
+    border-color: rgba(255, 31, 75, 0.4);
+    box-shadow: 0 0 20px -5px rgba(255, 31, 75, 0.15);
+  }
+
+  @keyframes blurIn {
+    from {
+      filter: blur(var(--blur-amount, 8px));
+      opacity: 0;
+      transform: translateY(4px) scale(0.96);
+    }
+    to {
+      filter: blur(0);
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-blur-in {
+    animation-name: blurIn;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes shinyText {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .animate-shiny-text {
+    animation-name: shinyText;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes shineSweep {
+    0% {
+      transform: translateX(-100%) skewX(-15deg);
+    }
+    100% {
+      transform: translateX(300%) skewX(-15deg);
+    }
+  }
+
+  .group-hover\:animate-shine-sweep {
+    animation: shineSweep 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-scroll-left {
+    animation: scrollLeft linear infinite;
+  }
+
+  .animate-scroll-right {
+    animation: scrollRight linear infinite;
+  }
+}
