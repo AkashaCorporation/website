@@ -48,7 +48,7 @@ function Navbar() {
     <header className="nav">
       <div className="nav-inner">
         <a href="#" className="flex items-center gap-3" style={{textDecoration:"none", color:"inherit"}}>
-          <div className="logo-mark"><AkashaGlyph size={22}/></div>
+          <div className="logo-mark"><img src="Akasha.png" alt="Akasha Logo" style={{width:"22px", height:"22px", objectFit:"contain"}}/></div>
           <div>
             <div style={{fontFamily:"var(--font-mono)", fontSize:"12px", letterSpacing:"0.22em", fontWeight:600}}>
               AKASHA<span style={{color:"var(--crimson)", marginLeft:"6px"}}>CORP</span>
