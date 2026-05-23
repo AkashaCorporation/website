@@ -325,7 +325,7 @@ function Team() {
           {DATA.team.map((m, i) => {
             const IC = Icon[m.icon] || Icon.Hexagon;
             return (
-              <a key={m.handle} href="#" className="flex col" style={{
+              <a key={m.handle} href={`https://github.com/${m.handle}`} target="_blank" rel="noopener" className="flex col" style={{
                 background:"var(--bg-1)", padding:"32px 28px", textDecoration:"none", color:"inherit",
                 position:"relative", overflow:"hidden", transition:"background 220ms",
               }} onMouseEnter={e => e.currentTarget.style.background = "var(--surface)"}
@@ -435,8 +435,13 @@ function Footer() {
               Ecosystem
             </div>
             <ul style={{margin:0, padding:0, listStyle:"none", display:"flex", flexDirection:"column", gap:"8px"}}>
-              {["HexCore IDE", "Scylla Studio", "Tsurugi", "Ananke"].map(x =>
-                <li key={x}><a href="#" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>{x}</a></li>
+              {[
+                { name: "HexCore IDE", url: "https://github.com/AkashaCorporation/HikariSystem-HexCore" },
+                { name: "Scylla Studio", url: "https://github.com/AkashaCorporation/HikariSystem-Scylla" },
+                { name: "Tsurugi", url: "https://github.com/ThreatBiih/HikariSystem-Tsurugi" },
+                { name: "Ananke", url: "https://github.com/ThreatBiih/HikariSystem-Ananke" }
+              ].map(x =>
+                <li key={x.name}><a href={x.url} target="_blank" rel="noopener" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>{x.name}</a></li>
               )}
             </ul>
           </div>
@@ -445,8 +450,13 @@ function Footer() {
               Research
             </div>
             <ul style={{margin:0, padding:0, listStyle:"none", display:"flex", flexDirection:"column", gap:"8px"}}>
-              {["Binary analysis", "Offensive security", "Language engineering", "Publications"].map(x =>
-                <li key={x}><a href="#" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>{x}</a></li>
+              {[
+                { name: "Binary analysis", url: "#research" },
+                { name: "Offensive security", url: "#research" },
+                { name: "Language engineering", url: "#research" },
+                { name: "Publications", url: "#research" }
+              ].map(x =>
+                <li key={x.name}><a href={x.url} style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>{x.name}</a></li>
               )}
             </ul>
           </div>
@@ -455,9 +465,9 @@ function Footer() {
               Channels
             </div>
             <ul style={{margin:0, padding:0, listStyle:"none", display:"flex", flexDirection:"column", gap:"8px"}}>
-              <li><a href="#" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>GitHub · @AkashaCorporation</a></li>
-              <li><a href="#" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>Discord · /uQFb4nUAcT</a></li>
-              <li><a href="#" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>contact@akashacorp.com</a></li>
+              <li><a href="https://github.com/AkashaCorporation" target="_blank" rel="noopener" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>GitHub · @AkashaCorporation</a></li>
+              <li><a href="https://discord.gg/uQFb4nUAcT" target="_blank" rel="noopener" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>Discord · /uQFb4nUAcT</a></li>
+              <li><a href="mailto:support@Akashacorporation.com" style={{color:"var(--text-2)", textDecoration:"none", fontSize:"14px"}}>support@Akashacorporation.com</a></li>
             </ul>
           </div>
           <div>
@@ -501,7 +511,7 @@ function Dock() {
   const links = [
     { tip: "GitHub",  icon: Icon.Github, href: "https://github.com/AkashaCorporation" },
     { tip: "Discord", icon: Icon.Chat,   href: "https://discord.gg/uQFb4nUAcT" },
-    { tip: "Email",   icon: Icon.Mail,   href: "mailto:contact@akashacorp.com" },
+    { tip: "Email",   icon: Icon.Mail,   href: "mailto:support@Akashacorporation.com" },
   ];
   return (
     <div className="dock-wrap">
