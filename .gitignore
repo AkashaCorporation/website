@@ -1,0 +1,6 @@
+node_modules/
+.openai/
+.qa/
+test-results/
+qa-preview.html
+qa-probe.js
