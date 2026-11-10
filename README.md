@@ -1,58 +1,57 @@
 # AkashaCorporation website
 
-Official product website for Akasha Corporation, a Brazilian AI-first and cybersecurity startup.
+Official bilingual product website for Akasha Corporation, a Brazilian AI-first and cybersecurity startup.
 
 - English default: https://akashacorporation.com/
 - Brazilian Portuguese: https://akashacorporation.com/pt-br/
-- Hosting: GitHub Pages from `main:/` with the custom domain preserved in `CNAME`.
+- Hosting: GitHub Pages through the `Deploy website` workflow.
 
 ## Architecture
 
-The site is static, dependency-free and generated from one bilingual content source.
+The website uses a small React/Vite runtime with server-side prerendering at build time.
 
-- `scripts/content.mjs`: canonical English and PT-BR content, product stages and legal copy.
-- `scripts/build.mjs`: semantic page generator.
-- `styles.css`: responsive visual system.
-- `site.js`: language state, mobile navigation, terminal replay and early-access dialog.
-- Generated pages are committed for GitHub Pages.
+- `src/App.jsx`: accessible bilingual interface and route rendering.
+- `src/styles.css`: Gallery/Archive visual system derived from the original Akasha museum concept.
+- `scripts/content.mjs`: canonical English/PT-BR facts and legal copy.
+- `scripts/postbuild.mjs`: prerenders the root, PT-BR, legal and error routes into `dist/`.
+- `scripts/check-built.mjs`: validates the production output and claim boundaries.
+- `public/assets/`: optimized editorial artwork and official Akasha product marks.
 
-English is visible without JavaScript. PT-BR has its own indexable route. The language control switches every visible interface string instantly without storage or network requests.
+React hydrates already-rendered HTML. Visitors and crawlers receive complete content before JavaScript runs. GSAP and Lenis are dynamically loaded only for the home-page motion layer; reduced-motion users receive the static composition.
 
-## Develop and validate
+## Develop
 
-Node.js 20 or later is sufficient. There are no npm dependencies.
+Node.js 20 or later is required.
 
 ```sh
+npm ci
 npm run dev
 npm test
 git diff --check
 ```
 
-`npm test` regenerates the landing pages, localized legal pages, 404 page and sitemap. It then runs more than 240 assertions covering links, language parity, metadata, legal identity, claim guardrails, accessibility structure, privacy and deployment files.
-
-Manual browser QA remains required for desktop and phone layouts, menu/dialog focus, language switching, terminal replay and reduced-motion behavior. Automated checks do not replace an accessibility audit.
+`npm test` creates the client and SSR bundles, prerenders every public route and runs the production contract suite. Build output is intentionally ignored by Git and uploaded directly by GitHub Actions.
 
 ## Content contract
 
-The website distinguishes:
+The website distinguishes shipped, pre-release, active R&D and planned work. Current public maturity labels include:
 
-- public, shipping engineering;
-- private research in active setup;
-- planned roadmap targets;
-- provider architecture targets that are not partnerships or endorsements.
+- HexCore stable `v3.8.4`;
+- Scylla pre-release with a `3.0` product target;
+- Hypotenuse `0.2` in development;
+- Bari public `v0.7.0`;
+- Akasha Sovereign SLM private R&D with codename and specifications pending evaluation.
 
-The Sovereign SLM program deliberately has no final product name, parameter count, license claim or public-weight promise until evaluation is complete. HexCore's current LLVM/MLIR 18.1.8 runtime is distinct from the LLVM/MLIR 22 migration target.
+Cloud providers are architecture targets, not partnership claims. Security-program references describe disclosure channels used by the team, not endorsement. Public product repositories remain authoritative for versions, platforms, licenses and limitations.
 
-Security-program references describe disclosure channels used by the team. They are not customer claims, partnerships or permission to publish confidential reports.
+## Visual assets
 
-## Privacy and contact
+The Hydra Akasha, HexCore, Scylla and Hypotenuse marks come from their official project sources. Museum artwork originates from the preserved first Akasha website prototype and is optimized for web delivery. Asset provenance is recorded in [content sources](docs/content-sources.md).
 
-The site loads no third-party fonts, scripts, analytics or embeds. It has no backend and stores no form data. The early-access dialog prepares a `mailto:` request in the visitor's email client.
+## Privacy and deployment
 
-Legal, privacy, terms and ethical-use copy is generated in English and PT-BR. Product and legal facts are tracked in [content sources](docs/content-sources.md).
+The site has no analytics, advertising, account system or backend form. The access dialog prepares a `mailto:` request in the visitor's email client.
 
-## Publish and rollback
+The Pages repository must use **GitHub Actions** as its publishing source. A successful workflow is not final acceptance: inspect the live domain, English/PT-BR routes, legal pages, keyboard navigation, reduced motion and mobile layouts before announcing a release.
 
-Keep `CNAME` unchanged. After merging to `main`, verify the exact GitHub Pages deployment and then inspect the live English/PT-BR routes and legal pages. A successful push alone is not deployment acceptance.
-
-Rollback with a normal revert commit. Do not force-push shared history.
+Rollback through a normal revert commit. Do not force-push shared history.
