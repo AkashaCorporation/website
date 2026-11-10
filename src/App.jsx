@@ -130,7 +130,7 @@ function Hero({ language, openModal }) {
         </div>
       </div>
       <figure className="hero-plate" data-hero-plate>
-        <div className="museum-mat"><img src="/assets/museum-angel.jpg" alt="" width="900" height="1439" fetchPriority="high" /></div>
+        <div className="museum-mat"><img src="/assets/museum-angel.jpg" alt="" width="900" height="1440" fetchPriority="high" /></div>
         <figcaption>PLATE I · VERIFIABLE INTELLIGENCE</figcaption>
       </figure>
       <blockquote data-hero-meta>“{tx(en.heroQuote, pt.heroQuote, language)}”</blockquote>
