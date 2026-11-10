@@ -82,8 +82,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .text-link:hover { color: var(--gold); }
 .text-link.light { color: var(--bone); }
 .hero-plate { position: relative; z-index: 1; justify-self: end; width: min(100%, 380px); margin: 0; }
-.museum-mat { padding: 13px; border: 1px solid rgba(26, 20, 13, .28); background: #dfd1b7; box-shadow: 18px 22px 50px rgba(53, 37, 16, .18); }
-.museum-mat img { width: 100%; aspect-ratio: 5/8; object-fit: cover; object-position: center; filter: sepia(.15) contrast(.94); }
+.museum-mat { overflow: hidden; padding: 13px; border: 1px solid rgba(26, 20, 13, .28); background: #dfd1b7; box-shadow: 18px 22px 50px rgba(53, 37, 16, .18); }
+.museum-mat img { width: 112%; max-width: none; aspect-ratio: 5/8; object-fit: cover; object-position: center; transform: translateX(-7%); filter: sepia(.15) contrast(.94); }
 .hero-plate figcaption { padding-top: 10px; color: #6d5731; font: 700 8px var(--font-mono); text-align: right; }
 .hero-stage blockquote { position: absolute; z-index: 2; left: 0; bottom: 18px; max-width: 520px; color: rgba(26, 20, 13, .68); font: italic 15px var(--font-display); }
 .hero-record { position: relative; z-index: 3; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid var(--line); font: 700 8px var(--font-mono); color: #715d38; }
