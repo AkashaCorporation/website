@@ -1,45 +1,57 @@
-# Akasha website
+# AkashaCorporation website
 
-Public AI, cybersecurity and systems-engineering website for Akasha Corporation.
+Official bilingual product website for Akasha Corporation, a Brazilian AI-first and cybersecurity startup.
 
-- Portuguese: https://akashacorporation.com/
-- English: https://akashacorporation.com/en/
-- Hosting: GitHub Pages, published from `main` at the existing custom domain in `CNAME`.
+- English default: https://akashacorporation.com/
+- Brazilian Portuguese: https://akashacorporation.com/pt-br/
+- Hosting: GitHub Pages through the `Deploy website` workflow.
+
+## Architecture
+
+The website uses a small React/Vite runtime with server-side prerendering at build time.
+
+- `src/App.jsx`: accessible bilingual interface and route rendering.
+- `src/styles.css`: Gallery/Archive visual system derived from the original Akasha museum concept.
+- `scripts/content.mjs`: canonical English/PT-BR facts and legal copy.
+- `scripts/postbuild.mjs`: prerenders the root, PT-BR, legal and error routes into `dist/`.
+- `scripts/check-built.mjs`: validates the production output and claim boundaries.
+- `public/assets/`: optimized editorial artwork and official Akasha product marks.
+
+React hydrates already-rendered HTML. Visitors and crawlers receive complete content before JavaScript runs. GSAP and Lenis are dynamically loaded only for the home-page motion layer; reduced-motion users receive the static composition.
 
 ## Develop
 
-Node.js 20 or later is sufficient. There are no npm dependencies and no package installation is needed.
+Node.js 20 or later is required.
 
 ```sh
+npm ci
 npm run dev
+npm test
+git diff --check
 ```
 
-The preview defaults to port 3000. `PORT` and `--port` are supported.
+`npm test` creates the client and SSR bundles, prerenders every public route and runs the production contract suite. Build output is intentionally ignored by Git and uploaded directly by GitHub Actions.
 
-## Edit and validate
+## Content contract
 
-1. Update both languages in `scripts/content.mjs`.
-2. Update the semantic templates in `scripts/build.mjs` when necessary.
-3. Edit `styles.css` and `site.js` for presentation and progressive enhancements.
-4. Run `npm test` and `git diff --check`.
-5. Commit the generated HTML and sitemap along with the source changes.
+The website distinguishes shipped, pre-release, active R&D and planned work. Current public maturity labels include:
 
-`npm test` regenerates the four localized pages, 404 page and sitemap. It then checks internal links, metadata, translation completeness, accessibility attributes, image dimensions, content guardrails, mobile navigation states and clipboard success/failure handling. The `Website checks` workflow repeats these checks on GitHub and verifies that the generated pages are committed.
+- HexCore stable `v3.8.4`;
+- Scylla pre-release with a `3.0` product target;
+- Hypotenuse `0.2` in development;
+- Bari public `v0.7.0`;
+- Akasha Sovereign SLM private R&D with codename and specifications pending evaluation.
 
-Check desktop and phone layouts before deployment, including menu open/close, Escape, anchor navigation, language links, privacy pages and browser Back/Forward. Check reduced motion and JavaScript-disabled navigation when changing relevant styles or behavior. Automated checks are not a complete accessibility audit.
+Cloud providers are architecture targets, not partnership claims. Security-program references describe disclosure channels used by the team, not endorsement. Public product repositories remain authoritative for versions, platforms, licenses and limitations.
 
-## Publish and rollback
+## Visual assets
 
-The existing GitHub Pages deployment builds from the committed files. Keep `CNAME` unchanged unless the domain configuration is intentionally changed. `.nojekyll` makes these static files independent of Jekyll processing.
+The Hydra Akasha, HexCore, Scylla and Hypotenuse marks come from their official project sources. Museum artwork originates from the preserved first Akasha website prototype and is optimized for web delivery. Asset provenance is recorded in [content sources](docs/content-sources.md).
 
-After pushing to `main`, inspect the Pages workflow for that exact commit, then check the live Portuguese and English pages and assets. Do not treat a successful push alone as a successful deployment.
+## Privacy and deployment
 
-To roll back a published redesign, revert its commit and push the revert. Avoid force-pushing or resetting shared history.
+The site has no analytics, advertising, account system or backend form. The access dialog prepares a `mailto:` request in the visitor's email client.
 
-## Content and privacy
+The Pages repository must use **GitHub Actions** as its publishing source. A successful workflow is not final acceptance: inspect the live domain, English/PT-BR routes, legal pages, keyboard navigation, reduced motion and mobile layouts before announcing a release.
 
-Product descriptions are grounded in public documentation. See [content sources](docs/content-sources.md). Distinguish stable releases, pre-releases and research. Do not imply certifications, guaranteed results, commercial service commitments or customer relationships without evidence and approval.
-
-The site loads no third-party fonts, runtime scripts, analytics or embeds. JavaScript only controls the mobile menu and copies the published support email. The site has no form or backend. Contact opens the visitor's email application; no email is sent by the website itself.
-
-The original `Akasha.png` is retained. The former React/Babel files and original upload/screenshot assets are preserved as historical source material; they are not loaded by the current website. New generated pages are regular HTML and remain readable without JavaScript.
+Rollback through a normal revert commit. Do not force-push shared history.

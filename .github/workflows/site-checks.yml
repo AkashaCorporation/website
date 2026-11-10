@@ -1,8 +1,7 @@
 name: Website checks
 on:
-  push:
-    branches: [main]
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -13,6 +12,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+      - run: npm ci
       - run: npm test
-      - name: Verify generated pages are committed
-        run: git diff --exit-code -- index.html en/index.html privacy.html en/privacy.html 404.html sitemap.xml
