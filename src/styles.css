@@ -294,8 +294,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .hero-intro { font-size: 15px; }
   .hero-actions { align-items: stretch; flex-direction: column; gap: 8px; }
   .hero-actions .button { width: 100%; }
-  .hero-plate { width: min(74%, 280px); justify-self: end; margin-top: -5px; }
-  .hero-stage blockquote { position: static; max-width: 80%; margin-top: -46px; }
+  .hero-plate { display: none; }
+  .hero-stage blockquote { position: static; max-width: 100%; margin-top: 12px; }
   .hero-record { align-items: flex-start; flex-direction: column; padding-block: 13px; }
   .discipline-track span { min-width: 290px; }
   .section { padding: 76px 0; }

@@ -42,6 +42,8 @@ for (const asset of assets.filter(file => /\.(?:png|jpe?g|webp|avif|svg)$/i.test
 check(assetBytes < 4 * 1024 * 1024, `optimized visual assets remain below 4 MiB (${assetBytes})`);
 const jsFiles = (await readdir(new URL('assets/', dist))).filter(file => file.endsWith('.js'));
 check(jsFiles.length > 0, 'client bundle emitted');
+const sourceCss = await readFile(new URL('../src/styles.css', import.meta.url), 'utf8');
+check(sourceCss.includes('.hero-plate { display: none; }'), 'mobile layout hides the decorative hero plate');
 check((await read('CNAME')).trim().toLowerCase() === 'akashacorporation.com', 'custom domain retained');
 check((await read('sitemap.xml')).includes('/pt-br/ethical-use.html'), 'localized legal route in sitemap');
 console.log(`PASS: ${checks} production build checks.`);
