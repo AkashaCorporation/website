@@ -23,7 +23,7 @@ The website does not claim certifications, funding, customers, revenue, cloud-pr
 
 Repository documentation and releases are authoritative for version, platform, license and feature availability. The website describes HexCore as a Windows x64 workbench and states that qualified engines currently use LLVM/MLIR 18.1.8. LLVM/MLIR 22 remains a research migration target.
 
-Bari `0.7.0` is public. Autonomous vulnerability research is described as an R&D direction with human adjudication, not an unattended production guarantee.
+Bari `0.7.0` is public. Its README documents interactive TUI, `bari exec` headless use, ACP, built-in specialists and BYOK providers using OpenAI- or Anthropic-compatible APIs. Future Akasha-hosted models are labeled as roadmap integration rather than a currently available managed provider. Autonomous vulnerability research remains an R&D direction with human adjudication, not an unattended production guarantee.
 
 Scylla is labeled pre-release with a 3.0 product target. Its repository documents a headless-first experimentation environment for authorization, business logic and governed web/API evidence.
 

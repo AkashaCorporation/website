@@ -167,7 +167,7 @@ function Terminal({ language }) {
   const [runKey, setRunKey] = useState(0);
   return <div className="terminal" data-reveal aria-label={tx('Illustrative security analysis trace', 'Trace ilustrativo de análise de segurança', language)} key={runKey}>
     <div className="terminal-bar"><span>HEXCORE / EVIDENCE RECORD</span><span>{tx('READ ONLY', 'SOMENTE LEITURA', language)}</span></div>
-    <div className="terminal-command"><span>$</span> bari analyze --engine hexcore --prove lifetime</div>
+    <div className="terminal-command"><span>$</span> bari exec "Ask june to inspect this fixture with HexCore; preserve unknowns."</div>
     <ol>{c.lines.map((line, index) => <li data-terminal-line key={`${line[0]}-${index}`}><span>0{index + 1}</span><strong>{line[0]}</strong><p>{line[1]}</p><em className={line[2]}>{line[2] === 'ok' ? 'PASS' : 'SAT'}</em></li>)}</ol>
     <div className="terminal-foot"><span>{c.footer}</span><button type="button" onClick={() => setRunKey(value => value + 1)} aria-label={c.replay}><Play /></button></div>
   </div>;
