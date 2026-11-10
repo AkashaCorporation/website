@@ -1,45 +1,58 @@
-# Akasha website
+# AkashaCorporation website
 
-Public AI, cybersecurity and systems-engineering website for Akasha Corporation.
+Official product website for Akasha Corporation, a Brazilian AI-first and cybersecurity startup.
 
-- Portuguese: https://akashacorporation.com/
-- English: https://akashacorporation.com/en/
-- Hosting: GitHub Pages, published from `main` at the existing custom domain in `CNAME`.
+- English default: https://akashacorporation.com/
+- Brazilian Portuguese: https://akashacorporation.com/pt-br/
+- Hosting: GitHub Pages from `main:/` with the custom domain preserved in `CNAME`.
 
-## Develop
+## Architecture
 
-Node.js 20 or later is sufficient. There are no npm dependencies and no package installation is needed.
+The site is static, dependency-free and generated from one bilingual content source.
+
+- `scripts/content.mjs`: canonical English and PT-BR content, product stages and legal copy.
+- `scripts/build.mjs`: semantic page generator.
+- `styles.css`: responsive visual system.
+- `site.js`: language state, mobile navigation, terminal replay and early-access dialog.
+- Generated pages are committed for GitHub Pages.
+
+English is visible without JavaScript. PT-BR has its own indexable route. The language control switches every visible interface string instantly without storage or network requests.
+
+## Develop and validate
+
+Node.js 20 or later is sufficient. There are no npm dependencies.
 
 ```sh
 npm run dev
+npm test
+git diff --check
 ```
 
-The preview defaults to port 3000. `PORT` and `--port` are supported.
+`npm test` regenerates the landing pages, localized legal pages, 404 page and sitemap. It then runs more than 240 assertions covering links, language parity, metadata, legal identity, claim guardrails, accessibility structure, privacy and deployment files.
 
-## Edit and validate
+Manual browser QA remains required for desktop and phone layouts, menu/dialog focus, language switching, terminal replay and reduced-motion behavior. Automated checks do not replace an accessibility audit.
 
-1. Update both languages in `scripts/content.mjs`.
-2. Update the semantic templates in `scripts/build.mjs` when necessary.
-3. Edit `styles.css` and `site.js` for presentation and progressive enhancements.
-4. Run `npm test` and `git diff --check`.
-5. Commit the generated HTML and sitemap along with the source changes.
+## Content contract
 
-`npm test` regenerates the four localized pages, 404 page and sitemap. It then checks internal links, metadata, translation completeness, accessibility attributes, image dimensions, content guardrails, mobile navigation states and clipboard success/failure handling. The `Website checks` workflow repeats these checks on GitHub and verifies that the generated pages are committed.
+The website distinguishes:
 
-Check desktop and phone layouts before deployment, including menu open/close, Escape, anchor navigation, language links, privacy pages and browser Back/Forward. Check reduced motion and JavaScript-disabled navigation when changing relevant styles or behavior. Automated checks are not a complete accessibility audit.
+- public, shipping engineering;
+- private research in active setup;
+- planned roadmap targets;
+- provider architecture targets that are not partnerships or endorsements.
+
+The Sovereign SLM program deliberately has no final product name, parameter count, license claim or public-weight promise until evaluation is complete. HexCore's current LLVM/MLIR 18.1.8 runtime is distinct from the LLVM/MLIR 22 migration target.
+
+Security-program references describe disclosure channels used by the team. They are not customer claims, partnerships or permission to publish confidential reports.
+
+## Privacy and contact
+
+The site loads no third-party fonts, scripts, analytics or embeds. It has no backend and stores no form data. The early-access dialog prepares a `mailto:` request in the visitor's email client.
+
+Legal, privacy, terms and ethical-use copy is generated in English and PT-BR. Product and legal facts are tracked in [content sources](docs/content-sources.md).
 
 ## Publish and rollback
 
-The existing GitHub Pages deployment builds from the committed files. Keep `CNAME` unchanged unless the domain configuration is intentionally changed. `.nojekyll` makes these static files independent of Jekyll processing.
+Keep `CNAME` unchanged. After merging to `main`, verify the exact GitHub Pages deployment and then inspect the live English/PT-BR routes and legal pages. A successful push alone is not deployment acceptance.
 
-After pushing to `main`, inspect the Pages workflow for that exact commit, then check the live Portuguese and English pages and assets. Do not treat a successful push alone as a successful deployment.
-
-To roll back a published redesign, revert its commit and push the revert. Avoid force-pushing or resetting shared history.
-
-## Content and privacy
-
-Product descriptions are grounded in public documentation. See [content sources](docs/content-sources.md). Distinguish stable releases, pre-releases and research. Do not imply certifications, guaranteed results, commercial service commitments or customer relationships without evidence and approval.
-
-The site loads no third-party fonts, runtime scripts, analytics or embeds. JavaScript only controls the mobile menu and copies the published support email. The site has no form or backend. Contact opens the visitor's email application; no email is sent by the website itself.
-
-The original `Akasha.png` is retained. The former React/Babel files and original upload/screenshot assets are preserved as historical source material; they are not loaded by the current website. New generated pages are regular HTML and remain readable without JavaScript.
+Rollback with a normal revert commit. Do not force-push shared history.

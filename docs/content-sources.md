@@ -1,33 +1,58 @@
-# Public content sources
+# Public content sources and claim boundaries
 
-Reviewed on 2026-11-09. This file records the basis for the website's claims, not an independent technical validation of every project feature.
+Reviewed on 2026-11-10. This file records where public website claims come from and which statements remain founder-supplied or roadmap-only.
 
-## Identity and contact
+## Corporate identity
 
-The existing website repository establishes the Akasha name, red dragon image, GitHub organization, custom domain and support email. This redesign preserves those public assets and channels.
+The legal entity name, CNPJ, Paraná location and corporate contact were supplied directly by the founder for publication:
 
-- https://github.com/AkashaCorporation/website
-- https://github.com/AkashaCorporation/website/blob/f2b370e2275e0494c1ce375454cbe14cfd9f2807/CNAME
-- https://github.com/AkashaCorporation/website/blob/f2b370e2275e0494c1ce375454cbe14cfd9f2807/sections-2.jsx
+- `AKASHA CORPORATION INOVA SIMPLES (I.S.)`
+- `70.060.002/0001-51`
+- `lukas@akashacorporation.com`
 
-The AI and cybersecurity positioning describes the company's direction. AI is presented as research and development, not a shipping autonomous service or a proprietary model with demonstrated performance.
+The website does not claim certifications, funding, customers, revenue, cloud-program membership or vendor partnership.
 
-## HexCore
+## Public engineering products
 
-- Public README: https://github.com/AkashaCorporation/HikariSystem-HexCore/blob/main/README.md
-- Stable release: https://github.com/AkashaCorporation/HikariSystem-HexCore/releases/tag/v3.8.4
-- Known limitations: https://github.com/AkashaCorporation/HikariSystem-HexCore/blob/main/docs/KNOWN_LIMITATIONS.md
+- HexCore: https://github.com/AkashaCorporation/HikariSystem-HexCore
+- Helix: https://github.com/AkashaCorporation/HexCore-Helix
+- Souper: https://github.com/AkashaCorporation/hexcore-souper
+- Bari: https://github.com/AkashaCorporation/Bari
+- Bari npm package: https://www.npmjs.com/package/@akashacorporation/bari
 
-The README identifies a VS Code workbench-based binary-analysis IDE, PE/ELF analysis, LLVM IR and MLIR decompilation, controlled emulation, semantic queries and reproducible automation. It distinguishes stable release 3.8.4 from later release candidates and identifies Windows 10/11 x64 as the supported packaged application. The website intentionally links to the release index rather than freezing a version number in marketing copy.
+Repository documentation and releases are authoritative for version, platform, license and feature availability. The website describes HexCore as a Windows x64 workbench and states that qualified engines currently use LLVM/MLIR 18.1.8. LLVM/MLIR 22 remains a research migration target.
 
-## Scylla
+Bari `0.7.0` is public. Autonomous vulnerability research is described as an R&D direction with human adjudication, not an unattended production guarantee.
 
-- Public README: https://github.com/AkashaCorporation/HikariSystem-Scylla/blob/main/README.md
+Hypotenuse is a private Android-security research lane. The public website discloses only its relationship to the product program, not implementation or target details.
 
-The README identifies an offensive-security experimentation IDE for web/API authorization and business logic, with explicit identity/resource/policy context, evidence provenance and distinct observation/candidate/validated-finding states. It calls the 3.0 target a pre-release whose packaging is being validated. The website preserves that status and does not offer a production-service claim.
+## Sovereign SLM program
 
-## Intentional omissions
+The founder reports that a foundation model has been selected and initial compute setup is underway while datasets are curated. The public website therefore labels the program as private R&D.
 
-No registration number, customer names, testimonials, customer logos, engagement claims, undisclosed reports, private product details, certifications, accuracy benchmarks, availability SLA or guarantee of vulnerability discovery has been added. The former dead preprint download, dated roadmap and unqualified production/performance claims are not presented on the new pages.
+No final model name, parameter count, architecture, base model, dataset composition, benchmark, license, release date or weight policy is claimed. Those fields require evaluation and a separate publication decision.
 
-Do not publish case studies or disclosures until their facts, publication permission and applicable disclosure requirements have been reviewed. Each repository's own license and limitations remain authoritative.
+## Security research
+
+The founder authorized a high-level statement that the engineering team has used official channels including Google Android Security / VRP, Qualcomm Product Security and Samsung Mobile Security Rewards. Research classes include kernel/driver lifetime issues, Binder authorization boundaries, callback ownership and clipboard security.
+
+The website intentionally omits report IDs, affected versions, exploit details, bounty amounts and vendor-confidential findings. Listing a program is not a partnership or endorsement claim.
+
+## Cloud architecture and startup programs
+
+Google Cloud Vertex AI/GKE, Alibaba Cloud PAI/Model Studio, NVIDIA GPU profiles and on-premise Kubernetes are described as target deployment surfaces. They are not represented as completed integrations or commercial partnerships.
+
+Program references used to shape the institutional presentation:
+
+- Google for Startups Cloud Program FAQ: https://cloud.google.com/startup/faq
+- NVIDIA Inception for Startups: https://www.nvidia.com/en-us/startups/
+
+Acceptance is discretionary. The website never promises approval or claims membership.
+
+## Editorial guardrails
+
+- Distinguish shipped, active R&D and planned work.
+- Do not convert a roadmap target into present capability.
+- Do not publish customer, investor, funding, certification or performance claims without evidence and approval.
+- Do not present illustrative terminal output as a real customer incident or autonomous disclosure.
+- Keep vendor-program research within coordinated-disclosure boundaries.

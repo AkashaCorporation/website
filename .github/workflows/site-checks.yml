@@ -15,4 +15,4 @@ jobs:
           node-version: '22'
       - run: npm test
       - name: Verify generated pages are committed
-        run: git diff --exit-code -- index.html en/index.html privacy.html en/privacy.html 404.html sitemap.xml
+        run: git diff --exit-code -- index.html en/index.html pt-br/index.html privacy.html terms.html ethical-use.html pt-br/privacy.html pt-br/terms.html pt-br/ethical-use.html 404.html sitemap.xml
