@@ -42,6 +42,12 @@ function useAkashaMotion(enabled) {
             scrollTrigger: { trigger: element, start: 'top 88%', once: true },
           });
         });
+        gsap.utils.toArray('[data-engraving]').forEach(element => {
+          gsap.fromTo(element, { clipPath: 'inset(100% 0 0 0)' }, {
+            clipPath: 'inset(0% 0 0 0)', duration: 1.05, ease: 'power3.out',
+            scrollTrigger: { trigger: element, start: 'top 91%', once: true },
+          });
+        });
         gsap.fromTo('[data-roadmap-rail]', { scaleY: 0 }, {
           scaleY: 1, ease: 'none',
           scrollTrigger: { trigger: '.roadmap-list', start: 'top 75%', end: 'bottom 70%', scrub: true },
@@ -130,7 +136,7 @@ function Hero({ language, openModal }) {
         </div>
       </div>
       <figure className="hero-plate" data-hero-plate>
-        <div className="museum-mat"><img src="/assets/museum-angel.jpg" alt="" width="900" height="1440" fetchPriority="high" /></div>
+        <div className="museum-mat"><img data-engraving src="/assets/museum-angel.jpg" alt="" width="900" height="1440" fetchPriority="high" /></div>
         <figcaption>PLATE I · VERIFIABLE INTELLIGENCE</figcaption>
       </figure>
       <blockquote data-hero-meta>“{tx(en.heroQuote, pt.heroQuote, language)}”</blockquote>
@@ -156,7 +162,7 @@ function Products({ language, openModal }) {
   return <section className="gallery section" id="products" aria-labelledby="products-title"><div className="shell">
     <div className="section-heading" data-reveal><div><p className="eyebrow">{c.sectionProducts}</p><h2 id="products-title">{c.productsTitle}</h2></div><p>{c.productsIntro}</p></div>
     <div className="catalog">{c.products.map((product, index) => <article className="catalog-entry" id={product.id} data-reveal key={product.id}>
-      <div className="catalog-visual"><img {...productVisuals[index]} width={index === 0 ? 820 : 640} height={index === 0 ? 1122 : 640} loading="lazy" /><span>{product.index}</span></div>
+      <div className="catalog-visual"><img data-engraving {...productVisuals[index]} width={index === 0 ? 820 : 640} height={index === 0 ? 1122 : 640} loading="lazy" /><span>{product.index}</span></div>
       <div className="catalog-copy"><div className="record-line"><span>{product.index}</span><strong>{product.status}</strong></div><h3>{product.name}</h3><p className="product-role">{product.role}</p><p className="product-text">{product.text}</p><ul>{product.features.map(feature => <li key={feature}><span>◇</span>{feature}</li>)}</ul><div className="tag-list">{product.tags.map(tag => <span key={tag}>{tag}</span>)}</div><p className="product-note">{product.note}</p>{index === 0 ? <button className="text-link" type="button" onClick={() => openModal('model')}>{c.productLinks[index]}<ArrowRight /></button> : <a className="text-link" href={links[index]}>{c.productLinks[index]}<ArrowUpRight /></a>}</div>
     </article>)}</div>
   </div></section>;
@@ -177,7 +183,7 @@ function Systems({ language }) {
   const c = content[language];
   return <section className="archive section" id="systems" aria-labelledby="systems-title"><div className="archive-watermark" aria-hidden="true">INSTRUMENTS</div><div className="shell">
     <div className="section-heading inverse" data-reveal><div><p className="eyebrow">{c.systemsLabel}</p><h2 id="systems-title">{c.systemsTitle}</h2></div><p>{c.systemsIntro}</p></div>
-    <div className="instrument-grid">{c.systems.map(system => <article className={`instrument ${system.accent}`} id={system.id} data-reveal key={system.id}><div className="instrument-index">{system.index}</div><div className="instrument-mark"><img src={system.mark} alt={system.name} width="700" height="700" loading="lazy" /></div><div className="instrument-copy"><span>{system.status}</span><h3>{system.name}</h3><p className="instrument-role">{system.role}</p><p>{system.text}</p><a href={system.href}>{c.systemsCta}<ArrowUpRight /></a></div></article>)}</div>
+    <div className="instrument-grid">{c.systems.map(system => <article className={`instrument ${system.accent}`} id={system.id} data-reveal key={system.id}><div className="instrument-index">{system.index}</div><div className="instrument-mark"><img data-engraving src={system.mark} alt={system.name} width="640" height="640" loading="lazy" /></div><div className="instrument-copy"><span>{system.status}</span><h3>{system.name}</h3><p className="instrument-role">{system.role}</p><p>{system.text}</p><a href={system.href}>{c.systemsCta}<ArrowUpRight /></a></div></article>)}</div>
     <Terminal language={language} />
   </div></section>;
 }
